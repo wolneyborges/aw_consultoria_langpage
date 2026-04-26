@@ -1,21 +1,21 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AW â€” Consultoria de IA e AutomaÃ§Ãµes</title>
-<meta name="description" content="AW: consultoria de IA, automaÃ§Ãµes e sistemas sob medida para empresas de moda, confecÃ§Ã£o e marcas.">
+<title>AW — Consultoria de IA e Automações</title>
+<meta name="description" content="AW: consultoria de IA, automações e sistemas sob medida para empresas de moda, confecção e marcas.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-   AW â€” Editorial system
+/* ────────────────────────────────────────────────
+   AW — Editorial system
    Token philosophy: neutrals + 1 optional accent.
    Type: Instrument Serif display + Geist sans + Geist Mono labels.
-   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+   ──────────────────────────────────────────────── */
 :root{
   --ink:#0c0c0a;
   --ink-2:#222220;
@@ -76,7 +76,7 @@ img,svg{ display:block; max-width:100%; }
 a{ color:inherit; text-decoration:none; }
 button{ font:inherit; color:inherit; background:none; border:0; padding:0; cursor:pointer; }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€  Typography primitives â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ────────  Typography primitives ──────── */
 .kicker{
   font-family:var(--f-mono);
   font-size:11px;
@@ -123,7 +123,7 @@ body[data-type="geometric"] em{
   font-weight:400;
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€  Theme toggle â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ────────  Theme toggle ──────── */
 .nav__right{ display:flex; align-items:center; gap:14px; }
 .theme-toggle{
   display:inline-flex; align-items:center; gap:10px;
@@ -181,7 +181,7 @@ body[data-palette="noir"] .theme-toggle__icon--moon{ opacity:1; transform: rotat
   }
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€  Top chrome / nav â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ────────  Top chrome / nav ──────── */
 .nav{
   position:fixed; top:0; left:0; right:0; z-index:50;
   display:flex; align-items:center; justify-content:space-between;
@@ -233,7 +233,7 @@ body[data-palette="noir"] .nav__brand-logo--night{ display:block; }
   .nav__brand{ width:24px; height:24px; }
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€  Intro â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ────────  Intro ──────── */
 .intro{
   min-height:100svh;
   display:grid;
@@ -449,7 +449,7 @@ body[data-palette="noir"] .intro__logo-img--night{ display:block; }
   }
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€  Ticker (brand loop) â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ────────  Ticker (brand loop) ──────── */
 .ticker{
   border-top:1px solid var(--line);
   border-bottom:1px solid var(--line);
@@ -468,14 +468,14 @@ body[data-palette="noir"] .intro__logo-img--night{ display:block; }
 }
 .ticker__track span{ display:inline-flex; align-items:center; gap:64px; }
 .ticker__track span::after{
-  content:"âœ¦"; font-style:normal; color:var(--ink-4); font-size:.55em; opacity:.7;
+  content:"✦"; font-style:normal; color:var(--ink-4); font-size:.55em; opacity:.7;
 }
 @keyframes marquee{
   from{ transform: translateX(0); }
   to{ transform: translateX(-50%); }
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€  Hero sequence  â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ────────  Hero sequence  ──────── */
 .heros{ padding: var(--pad-y) var(--pad-x); display:grid; gap: clamp(100px, 14vw, 200px); }
 .hero{
   display:grid;
@@ -721,7 +721,7 @@ body[data-palette="noir"] .intro__logo-img--night{ display:block; }
   .hero__media{ aspect-ratio: 4/3; }
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€  Section band  â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ────────  Section band  ──────── */
 section.band{
   padding: var(--pad-y) var(--pad-x);
   max-width: var(--max);
@@ -745,7 +745,7 @@ section.band{
   .band__head{ grid-template-columns: 1fr; gap:16px; align-items:start; }
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€  Posicionamento + VÃ­deo â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ────────  Posicionamento + Vídeo ──────── */
 .posicionamento{
   display:grid;
   grid-template-columns: 1.1fr .9fr;
@@ -848,7 +848,7 @@ section.band{
   }
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€  Capacidades  â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ────────  Capacidades  ──────── */
 .capabilities-list{
   list-style:none; padding:0; margin:0;
   border-top:1px solid var(--line);
@@ -888,7 +888,7 @@ section.band{
   .capabilities-list .tag{ display:none; }
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€  MÃ©todo  â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ────────  Método  ──────── */
 .method{
   display:grid;
   grid-template-columns: repeat(2, 1fr);
@@ -934,7 +934,7 @@ section.band{
   .method{ grid-template-columns: 1fr; }
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€  Antes / Depois  â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ────────  Antes / Depois  ──────── */
 .beforeafter-wrap{
   display:grid;
   gap:14px;
@@ -1084,7 +1084,7 @@ section.band{
   .beforeafter__controls{ justify-content:flex-start; }
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€  Statement â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ────────  Statement ──────── */
 .statement{
   padding: var(--pad-y) var(--pad-x);
   max-width: var(--max); margin: 0 auto;
@@ -1125,7 +1125,7 @@ section.band{
   .statement__row{ grid-template-columns: 1fr; }
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€  CTA final â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ────────  CTA final ──────── */
 .cta{
   padding: var(--pad-y) var(--pad-x);
   background: var(--ink);
@@ -1164,7 +1164,7 @@ section.band{
   .cta__row{ grid-template-columns: 1fr; }
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€  Footer â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ────────  Footer ──────── */
 .foot{
   padding: 44px var(--pad-x) 32px;
   border-top:1px solid var(--line);
@@ -1200,7 +1200,7 @@ section.band{
   .foot__right{ text-align:left; }
 }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€  Modal â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ────────  Modal ──────── */
 .modal{
   position:fixed; inset:0; z-index:200;
   background: color-mix(in oklab, var(--ink) 70%, transparent);
@@ -1273,7 +1273,7 @@ section.band{
 .modal h3{ margin:0 0 6px; font-family:var(--f-display); font-weight:400; font-size: 1.6rem; letter-spacing:-.01em; }
 .modal p{ color:var(--ink-3); max-width: 60ch; }
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€  Scroll reveal util â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ────────  Scroll reveal util ──────── */
 .reveal{ opacity:0; transform: translateY(18px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
 .reveal.is-in{ opacity:1; transform: translateY(0); }
 
@@ -1319,7 +1319,7 @@ section.band{
 }
 
 @media (max-width: 760px){
-  /* Mobile: card do vÃ­deo menor, centralizado e em 1:1 */
+  /* Mobile: card do vídeo menor, centralizado e em 1:1 */
   .posicionamento .video-card{
     display:block;
     width:100%;
@@ -1340,7 +1340,7 @@ section.band{
   }
 
   /* Mobile: enquadramento da imagem 01 puxado para a esquerda
-     para mostrar mais conteÃºdo na lateral direita */
+     para mostrar mais conteúdo na lateral direita */
   #hero-01 .hero__media img{
     object-position:68% center;
   }
@@ -1363,7 +1363,7 @@ section.band{
     <div class="nav__links">
       <a href="#posicionamento">Posicionamento</a>
       <a href="#capacidades">Capacidades</a>
-      <a href="#metodo">MÃ©todo</a>
+      <a href="#metodo">Método</a>
       <a href="#transformacao">Resultado</a>
     </div>
     <div class="nav__right">
@@ -1399,7 +1399,7 @@ section.band{
         </figure>
 
         <h1 class="intro__title">
-          <span class="line"><span>InteligÃªncia</span></span>
+          <span class="line"><span>Inteligência</span></span>
           <span class="line"><span>que opera <em>dentro</em></span></span>
           <span class="line"><span>da sua empresa.</span></span>
         </h1>
@@ -1407,7 +1407,7 @@ section.band{
 
       <div class="intro__footer">
         <p>
-          A AW identifica gargalos e implementa soluÃ§Ãµes digitais â€” IA, automaÃ§Ãµes e sistemas sob medida â€” para transformar a operaÃ§Ã£o com mais clareza e produtividade.
+          A AW identifica gargalos e implementa soluções digitais — IA, automações e sistemas sob medida — para transformar a operação com mais clareza e produtividade.
         </p>
         <div style="display:flex; gap:10px; flex-wrap:wrap;">
           <a href="#cta-final" class="btn btn--dark">
@@ -1416,7 +1416,7 @@ section.band{
               <path d="M3 13 L13 3 M6 3 H13 V10"/>
             </svg>
           </a>
-          <a href="#posicionamento" class="btn btn--ghost">Ver o mÃ©todo</a>
+          <a href="#posicionamento" class="btn btn--ghost">Ver o método</a>
         </div>
       </div>
     </div>
@@ -1425,13 +1425,13 @@ section.band{
   <!-- Ticker -->
   <div class="ticker" aria-hidden="true">
     <div class="ticker__track">
-      <span>Moda</span><span>ConfecÃ§Ã£o</span><span>Marcas</span><span>IA aplicada</span><span>AutomaÃ§Ãµes</span><span>Sistemas sob medida</span><span>Agentes</span><span>Workflows</span>
-      <span>Moda</span><span>ConfecÃ§Ã£o</span><span>Marcas</span><span>IA aplicada</span><span>AutomaÃ§Ãµes</span><span>Sistemas sob medida</span><span>Agentes</span><span>Workflows</span>
+      <span>Moda</span><span>Confecção</span><span>Marcas</span><span>IA aplicada</span><span>Automações</span><span>Sistemas sob medida</span><span>Agentes</span><span>Workflows</span>
+      <span>Moda</span><span>Confecção</span><span>Marcas</span><span>IA aplicada</span><span>Automações</span><span>Sistemas sob medida</span><span>Agentes</span><span>Workflows</span>
     </div>
   </div>
 
-  <!-- Hero sequence (3 painÃ©is com as fotos do letreiro) -->
-  <section class="heros" aria-label="SequÃªncia de apresentaÃ§Ã£o">
+  <!-- Hero sequence (3 painéis com as fotos do letreiro) -->
+  <section class="heros" aria-label="Sequência de apresentação">
 
     <article class="hero reveal" id="hero-01">
       <div class="hero__tag hero__tag--outside">
@@ -1439,7 +1439,7 @@ section.band{
         <span>Consultoria aplicada</span>
       </div>
       <div class="hero__media">
-        <img src="uploads/imagem-06.png" alt="ReuniÃ£o da AW com equipe em showroom de moda.">
+        <img src="assets/img-01.png" alt="Reunião da AW com equipe em showroom de moda.">
       </div>
       <div class="hero__body">
         <div class="hero__copy">
@@ -1447,9 +1447,9 @@ section.band{
             <span class="hero__tag-num">01</span>
             <span>Consultoria aplicada</span>
           </div>
-          <h2>IA, automaÃ§Ãµes e sistemas <em>sob medida</em> para a sua empresa.</h2>
+          <h2>IA, automações e sistemas <em>sob medida</em> para a sua empresa.</h2>
           <div style="margin-top:22px;">
-            <p>Cada operaÃ§Ã£o tem seu prÃ³prio ritmo, pessoas e pontos cegos. A AW constrÃ³i soluÃ§Ãµes ajustadas a esse cenÃ¡rio real â€” nÃ£o pacotes prontos.</p>
+            <p>Cada operação tem seu próprio ritmo, pessoas e pontos cegos. A AW constrói soluções ajustadas a esse cenário real — não pacotes prontos.</p>
           </div>
         </div>
       </div>
@@ -1458,24 +1458,24 @@ section.band{
     <article class="hero reveal" id="hero-02">
       <div class="hero__tag hero__tag--outside">
         <span class="hero__tag-num">02</span>
-        <span>EstratÃ©gia antes da ferramenta</span>
+        <span>Estratégia antes da ferramenta</span>
       </div>
       <div class="hero__media">
         <picture>
-          <source media="(min-width: 861px)" srcset="uploads/imagem-07.png">
-          <img src="uploads/imagem-06.png" alt="Consultor AW conversando com cliente em loja de moda.">
+          <source media="(min-width: 861px)" srcset="assets/img-07-desktop.png">
+          <img src="assets/img-04.png" alt="Consultor AW conversando com cliente em loja de moda.">
         </picture>
       </div>
       <div class="hero__body">
         <div class="hero__copy">
           <div class="hero__tag">
             <span class="hero__tag-num">02</span>
-            <span>EstratÃ©gia antes da ferramenta</span>
+            <span>Estratégia antes da ferramenta</span>
           </div>
-          <h2>Antes de automatizar, a AW entende a <em>operaÃ§Ã£o real</em> da empresa.</h2>
+          <h2>Antes de automatizar, a AW entende a <em>operação real</em> da empresa.</h2>
           <div style="margin-top:22px;">
-            <p>O trabalho comeÃ§a no diagnÃ³stico: dores, retrabalho, dependÃªncias, fluxos manuais e oportunidades de IA aplicada.</p>
-            <p><strong style="color:var(--ink);">O resultado Ã© uma soluÃ§Ã£o pensada para o negÃ³cio</strong>, nÃ£o uma camada genÃ©rica de tecnologia.</p>
+            <p>O trabalho começa no diagnóstico: dores, retrabalho, dependências, fluxos manuais e oportunidades de IA aplicada.</p>
+            <p><strong style="color:var(--ink);">O resultado é uma solução pensada para o negócio</strong>, não uma camada genérica de tecnologia.</p>
           </div>
         </div>
       </div>
@@ -1484,25 +1484,25 @@ section.band{
     <article class="hero reveal" id="hero-03">
       <div class="hero__tag hero__tag--outside">
         <span class="hero__tag-num">03</span>
-        <span>ConstruÃ§Ã£o prÃ¡tica</span>
+        <span>Construção prática</span>
       </div>
       <div class="hero__media">
         <picture>
-          <source media="(min-width: 861px)" srcset="uploads/imagem-07.png">
-          <img src="uploads/imagem-07.png" alt="Equipe AW em reuniÃ£o de construÃ§Ã£o de soluÃ§Ãµes com design de moda.">
+          <source media="(min-width: 861px)" srcset="assets/img-03-desktop.png">
+          <img src="assets/img-05.png" alt="Equipe AW em reunião de construção de soluções com design de moda.">
         </picture>
       </div>
       <div class="hero__body">
         <div class="hero__copy">
           <div class="hero__tag">
             <span class="hero__tag-num">03</span>
-            <span>ConstruÃ§Ã£o prÃ¡tica</span>
+            <span>Construção prática</span>
           </div>
-          <h2>Da anÃ¡lise ao protÃ³tipo. Do protÃ³tipo Ã  <em>soluÃ§Ã£o funcionando</em>.</h2>
+          <h2>Da análise ao protótipo. Do protótipo à <em>solução funcionando</em>.</h2>
           <div style="margin-top:22px;">
-            <p>A AW estrutura, constrÃ³i e treina a equipe para usar sistemas, agentes e automaÃ§Ãµes com clareza no dia a dia.</p>
+            <p>A AW estrutura, constrói e treina a equipe para usar sistemas, agentes e automações com clareza no dia a dia.</p>
             <a href="#metodo" class="btn btn--ghost" style="margin-top:22px;">
-              Ver mÃ©todo
+              Ver método
               <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
                 <path d="M3 13 L13 3 M6 3 H13 V10"/>
               </svg>
@@ -1514,7 +1514,7 @@ section.band{
 
   </section>
 
-  <!-- Posicionamento + VÃ­deo -->
+  <!-- Posicionamento + Vídeo -->
   <section class="band" id="posicionamento">
     <div class="band__head">
       <span class="kicker">Posicionamento</span>
@@ -1523,11 +1523,11 @@ section.band{
 
     <div class="posicionamento reveal">
       <div>
-        <p>A AW combina visÃ£o estratÃ©gica, leitura visual e execuÃ§Ã£o tÃ©cnica para criar automaÃ§Ãµes, sistemas e agentes que reduzem esforÃ§o manual.</p>
-        <p>O mÃ©todo conecta diagnÃ³stico, desenho de workflow, prototipaÃ§Ã£o, implementaÃ§Ã£o e treinamento â€” para que a tecnologia vire rotina, nÃ£o mais uma ferramenta na prateleira.</p>
+        <p>A AW combina visão estratégica, leitura visual e execução técnica para criar automações, sistemas e agentes que reduzem esforço manual.</p>
+        <p>O método conecta diagnóstico, desenho de workflow, prototipação, implementação e treinamento — para que a tecnologia vire rotina, não mais uma ferramenta na prateleira.</p>
         <div style="margin-top:28px;">
           <a href="#cta-final" class="btn btn--ghost">
-            Quero um diagnÃ³stico
+            Quero um diagnóstico
             <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
               <path d="M3 13 L13 3 M6 3 H13 V10"/>
             </svg>
@@ -1536,7 +1536,7 @@ section.band{
       </div>
 
       <figure class="video-card" style="margin:0;">
-        <button class="video-card__thumb" id="open-video" aria-label="Abrir vÃ­deo de apresentaÃ§Ã£o">
+        <button class="video-card__thumb" id="open-video" aria-label="Abrir vídeo de apresentação">
           <video class="video-card__preview" id="video-thumb" muted playsinline preload="metadata" aria-hidden="true">
             <source src="https://pub-6cce15b3f2124ca98e250ca20770011c.r2.dev/Avatar_Video%20(1).mp4" type="video/mp4">
           </video>
@@ -1546,7 +1546,7 @@ section.band{
         </button>
         <figcaption class="video-card__title">
           <span>Como a AW atua dentro da empresa</span>
-          <span class="arrow">ASSISTIR â†’</span>
+          <span class="arrow">ASSISTIR →</span>
         </figcaption>
       </figure>
     </div>
@@ -1560,22 +1560,22 @@ section.band{
     </div>
 
     <ol class="capabilities-list reveal">
-      <li><span class="num">001</span><span class="name">Landing pages modernas.</span><span class="tag">web Â· conversÃ£o</span></li>
-      <li><span class="num">002</span><span class="name">Sites institucionais</span><span class="tag">web Â· marca</span></li>
-      <li><span class="num">003</span><span class="name">Aplicativos nativos iOS/Android</span><span class="tag">mobile Â· iOS/Android</span></li>
-      <li><span class="num">004</span><span class="name">Sistemas internos personalizados</span><span class="tag">interno Â· operaÃ§Ã£o</span></li>
-      <li><span class="num">005</span><span class="name">Sistemas com IA 24/7</span><span class="tag">plataforma Â· IA</span></li>
-      <li><span class="num">006</span><span class="name">Agentes autÃ´nomos 24/7</span><span class="tag">agentes Â· execuÃ§Ã£o</span></li>
-      <li><span class="num">007</span><span class="name">Setores com agentes</span><span class="tag">agentes Â· equipes</span></li>
-      <li><span class="num">008</span><span class="name">Workflows com IA</span><span class="tag">fluxos Â· orquestraÃ§Ã£o</span></li>
-      <li><span class="num">009</span><span class="name">Treinamento de equipe</span><span class="tag">pessoas Â· adoÃ§Ã£o</span></li>
+      <li><span class="num">001</span><span class="name">Landing pages modernas.</span><span class="tag">web · conversão</span></li>
+      <li><span class="num">002</span><span class="name">Sites institucionais</span><span class="tag">web · marca</span></li>
+      <li><span class="num">003</span><span class="name">Aplicativos nativos iOS/Android</span><span class="tag">mobile · iOS/Android</span></li>
+      <li><span class="num">004</span><span class="name">Sistemas internos personalizados</span><span class="tag">interno · operação</span></li>
+      <li><span class="num">005</span><span class="name">Sistemas com IA 24/7</span><span class="tag">plataforma · IA</span></li>
+      <li><span class="num">006</span><span class="name">Agentes autônomos 24/7</span><span class="tag">agentes · execução</span></li>
+      <li><span class="num">007</span><span class="name">Setores com agentes</span><span class="tag">agentes · equipes</span></li>
+      <li><span class="num">008</span><span class="name">Workflows com IA</span><span class="tag">fluxos · orquestração</span></li>
+      <li><span class="num">009</span><span class="name">Treinamento de equipe</span><span class="tag">pessoas · adoção</span></li>
     </ol>
   </section>
 
-  <!-- MÃ©todo -->
+  <!-- Método -->
   <section class="band" id="metodo">
     <div class="band__head">
-      <span class="kicker">MÃ©todo completo</span>
+      <span class="kicker">Método completo</span>
       <h2>Como a AW atua <em>dentro da empresa</em>.</h2>
     </div>
 
@@ -1583,7 +1583,7 @@ section.band{
       <div class="method__step">
         <div class="method__num">01</div>
         <div class="method__text">
-          <span class="eyebrow">ImersÃ£o</span>
+          <span class="eyebrow">Imersão</span>
           <h3>Entrevista com a empresa</h3>
         </div>
       </div>
@@ -1598,41 +1598,41 @@ section.band{
         <div class="method__num">03</div>
         <div class="method__text">
           <span class="eyebrow">Leitura</span>
-          <h3>DiagnÃ³stico estratÃ©gico</h3>
+          <h3>Diagnóstico estratégico</h3>
         </div>
       </div>
       <div class="method__step">
         <div class="method__num">04</div>
         <div class="method__text">
           <span class="eyebrow">Desenho</span>
-          <h3>CriaÃ§Ã£o do workflow ideal com IA</h3>
+          <h3>Criação do workflow ideal com IA</h3>
         </div>
       </div>
       <div class="method__step">
         <div class="method__num">05</div>
         <div class="method__text">
-          <span class="eyebrow">PrototipaÃ§Ã£o</span>
-          <h3>ApresentaÃ§Ã£o de protÃ³tipos e soluÃ§Ãµes</h3>
+          <span class="eyebrow">Prototipação</span>
+          <h3>Apresentação de protótipos e soluções</h3>
         </div>
       </div>
       <div class="method__step">
         <div class="method__num">06</div>
         <div class="method__text">
           <span class="eyebrow">Alinhamento</span>
-          <h3>DefiniÃ§Ã£o das implementaÃ§Ãµes</h3>
+          <h3>Definição das implementações</h3>
         </div>
       </div>
       <div class="method__step">
         <div class="method__num">07</div>
         <div class="method__text">
-          <span class="eyebrow">ExecuÃ§Ã£o</span>
-          <h3>ConstruÃ§Ã£o das soluÃ§Ãµes</h3>
+          <span class="eyebrow">Execução</span>
+          <h3>Construção das soluções</h3>
         </div>
       </div>
       <div class="method__step">
         <div class="method__num">08</div>
         <div class="method__text">
-          <span class="eyebrow">AdoÃ§Ã£o</span>
+          <span class="eyebrow">Adoção</span>
           <h3>Treinamento da equipe</h3>
         </div>
       </div>
@@ -1642,8 +1642,8 @@ section.band{
   <!-- Antes / Depois -->
   <section class="band" id="transformacao">
     <div class="band__head">
-      <span class="kicker">Antes Â· Depois</span>
-      <h2>A transformaÃ§Ã£o <em>operacional esperada</em>.</h2>
+      <span class="kicker">Antes · Depois</span>
+      <h2>A transformação <em>operacional esperada</em>.</h2>
     </div>
 
     <div class="beforeafter-wrap reveal">
@@ -1656,7 +1656,7 @@ section.band{
         <div class="ba-col ba-col--before">
           <div class="ba-stack">
             <figure class="ba-media">
-              <img src="uploads/imagem-06.png?v=20260425-150245" alt="CenÃ¡rio antes da transformaÃ§Ã£o operacional">
+              <img src="uploads/imagem-06.png?v=20260425-150245" alt="Cenário antes da transformação operacional">
             </figure>
             <div class="ba-copy">
               <h3>Antes</h3>
@@ -1665,7 +1665,7 @@ section.band{
                 <li data-n="A2">Retrabalho constante</li>
                 <li data-n="A3">Buscas manuais em planilhas</li>
                 <li data-n="A4">Dificuldade operacional no dia a dia</li>
-                <li data-n="A5">Excesso de dependÃªncia de pessoas-chave</li>
+                <li data-n="A5">Excesso de dependência de pessoas-chave</li>
               </ul>
             </div>
           </div>
@@ -1673,16 +1673,16 @@ section.band{
         <div class="ba-col ba-col--after">
           <div class="ba-stack">
             <figure class="ba-media">
-              <img src="uploads/imagem-07.png?v=20260425-150252" alt="CenÃ¡rio depois da transformaÃ§Ã£o operacional">
+              <img src="uploads/imagem-07.png?v=20260425-150252" alt="Cenário depois da transformação operacional">
             </figure>
             <div class="ba-copy">
               <h3>Depois</h3>
               <ul>
-                <li data-n="D1">OperaÃ§Ã£o inteligente e previsÃ­vel</li>
-                <li data-n="D2">AutomaÃ§Ã£o dos fluxos repetitivos</li>
+                <li data-n="D1">Operação inteligente e previsível</li>
+                <li data-n="D2">Automação dos fluxos repetitivos</li>
                 <li data-n="D3">Consulta por chat, direta e imediata</li>
-                <li data-n="D4">RelatÃ³rios rÃ¡pidos sob demanda</li>
-                <li data-n="D5">Mais clareza, menos fricÃ§Ã£o, mais eficiÃªncia</li>
+                <li data-n="D4">Relatórios rápidos sob demanda</li>
+                <li data-n="D5">Mais clareza, menos fricção, mais eficiência</li>
               </ul>
             </div>
           </div>
@@ -1694,16 +1694,16 @@ section.band{
   <!-- Statement -->
   <section class="statement reveal">
     <span class="kicker">Diferenciais</span>
-    <h2>NÃ£o Ã© <em>sÃ³ consultoria</em>.<br>Ã‰ mÃ©todo vivo.</h2>
+    <h2>Não é <em>só consultoria</em>.<br>É método vivo.</h2>
 
     <div class="statement__row">
-      <p>DiagnÃ³stico + estratÃ©gia + criaÃ§Ã£o + IA aplicada + treinamento. Uma camada Ãºnica que liga o entendimento da operaÃ§Ã£o ao resultado real, dentro da rotina da equipe.</p>
+      <p>Diagnóstico + estratégia + criação + IA aplicada + treinamento. Uma camada única que liga o entendimento da operação ao resultado real, dentro da rotina da equipe.</p>
       <div class="statement__tags">
         <span>IA aplicada</span>
-        <span>Moda &amp; confecÃ§Ã£o</span>
-        <span>VisÃ£o visual + operacional</span>
-        <span>SoluÃ§Ãµes reais</span>
-        <span>EstruturaÃ§Ã£o prÃ¡tica</span>
+        <span>Moda &amp; confecção</span>
+        <span>Visão visual + operacional</span>
+        <span>Soluções reais</span>
+        <span>Estruturação prática</span>
         <span>Escala por nicho</span>
       </div>
     </div>
@@ -1712,11 +1712,11 @@ section.band{
   <!-- CTA final -->
   <section class="cta" id="cta-final">
     <div class="cta__inner">
-      <span class="kicker">PrÃ³ximo passo</span>
-      <h2>Leve IA aplicada <em>para dentro</em> da operaÃ§Ã£o da sua empresa.</h2>
+      <span class="kicker">Próximo passo</span>
+      <h2>Leve IA aplicada <em>para dentro</em> da operação da sua empresa.</h2>
 
       <div class="cta__row">
-        <p>Uma conversa estratÃ©gica pode revelar onde automatizar, o que construir e como treinar a equipe para trabalhar melhor.</p>
+        <p>Uma conversa estratégica pode revelar onde automatizar, o que construir e como treinar a equipe para trabalhar melhor.</p>
         <div class="cta__buttons">
           <a href="mailto:contato@awconsultoria.com" class="btn btn--dark">
             Enviar e-mail
@@ -1742,11 +1742,11 @@ section.band{
           <a href="mailto:contato@awconsultoria.com">E-mail</a>
           <a href="https://wa.me/5562985591895">WhatsApp</a>
         </div>
-        <div class="foot__right">AtuaÃ§Ã£o remota e<br>presencial sob consulta.</div>
+        <div class="foot__right">Atuação remota e<br>presencial sob consulta.</div>
       </div>
       <div class="foot__meta">
-        <span>Â© <span id="year-2">â€”</span> AW Â· Todos os direitos reservados.</span>
-        <span>Moda Â· ConfecÃ§Ã£o Â· Marcas</span>
+        <span>© <span id="year-2">—</span> AW · Todos os direitos reservados.</span>
+        <span>Moda · Confecção · Marcas</span>
       </div>
     </div>
   </footer>
@@ -1758,7 +1758,7 @@ section.band{
         <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3 L13 13 M13 3 L3 13"/></svg>
       </button>
       <div class="modal__frame">
-        <button class="modal__frame-close" id="close-video-frame" aria-label="Fechar vÃ­deo">
+        <button class="modal__frame-close" id="close-video-frame" aria-label="Fechar vídeo">
           <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3 L13 13 M13 3 L3 13"/></svg>
         </button>
         <video
@@ -1769,11 +1769,11 @@ section.band{
           preload="metadata"
         >
           <source src="https://pub-6cce15b3f2124ca98e250ca20770011c.r2.dev/Avatar_Video%20(1).mp4" type="video/mp4">
-          Seu navegador nÃ£o suporta reproduÃ§Ã£o de vÃ­deo.
+          Seu navegador não suporta reprodução de vídeo.
         </video>
       </div>
       <h3 id="modal-title">Como a AW atua dentro da empresa</h3>
-      <p>ApresentaÃ§Ã£o em vÃ­deo da atuaÃ§Ã£o da AW dentro da operaÃ§Ã£o do cliente.</p>
+      <p>Apresentação em vídeo da atuação da AW dentro da operação do cliente.</p>
     </div>
   </div>
 
@@ -1784,7 +1784,7 @@ section.band{
 <script type="text/babel" src="tweaks-panel.jsx"></script>
 
 <script>
-/* â”€â”€â”€â”€â”€â”€â”€ Core behavior â”€â”€â”€â”€â”€â”€â”€ */
+/* ─────── Core behavior ─────── */
 (function(){
   // Year
   const y = new Date().getFullYear();
@@ -1826,7 +1826,7 @@ section.band{
     });
   });
 
-  // Theme toggle (bone = dia, noir = noite) â€” persistÃªncia via localStorage + meta edit_mode
+  // Theme toggle (bone = dia, noir = noite) — persistência via localStorage + meta edit_mode
   const themeBtn = document.getElementById('theme-toggle');
   const themeLabel = themeBtn.querySelector('.theme-toggle__label');
   const applyTheme = (palette) => {
@@ -1984,5 +1984,3 @@ const waitForTweaks = setInterval(()=>{
 
 </body>
 </html>
-
-
