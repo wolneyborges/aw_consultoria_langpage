@@ -1,0 +1,1988 @@
+﻿<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AW â€” Consultoria de IA e AutomaÃ§Ãµes</title>
+<meta name="description" content="AW: consultoria de IA, automaÃ§Ãµes e sistemas sob medida para empresas de moda, confecÃ§Ã£o e marcas.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500&family=Geist:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   AW â€” Editorial system
+   Token philosophy: neutrals + 1 optional accent.
+   Type: Instrument Serif display + Geist sans + Geist Mono labels.
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+:root{
+  --ink:#0c0c0a;
+  --ink-2:#222220;
+  --ink-3:#56554f;
+  --ink-4:#8a8880;
+  --line:#d9d6cc;
+  --line-2:#eae7de;
+  --paper:#f4f1ea;
+  --paper-2:#ebe7dd;
+  --paper-3:#e3dece;
+  --card:#fbfaf5;
+  --accent:#2a3a2a;     /* deep olive */
+
+  --f-display:"Instrument Serif", "Fraunces", Georgia, serif;
+  --f-sans:"Geist", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --f-mono:"Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --pad-x: clamp(20px, 4.5vw, 72px);
+  --pad-y: clamp(64px, 10vw, 160px);
+  --max: 1440px;
+
+  --ease: cubic-bezier(.22,.61,.36,1);
+  --ease-out: cubic-bezier(.16,1,.3,1);
+}
+
+/* Palette variants */
+body[data-palette="sand"]{
+  --ink:#1a1610; --ink-2:#2b241a; --ink-3:#5f5545; --ink-4:#8f8470;
+  --line:#d8cfba; --line-2:#ebe3ce; --paper:#f2ead7; --paper-2:#e8dfc5;
+  --paper-3:#ddd2b1; --card:#f9f3e2; --accent:#7a4a23;
+}
+body[data-palette="noir"]{
+  --ink:#f4f1ea; --ink-2:#e8e4da; --ink-3:#a7a298; --ink-4:#6b675e;
+  --line:#2a2823; --line-2:#1c1b18; --paper:#0c0c0a; --paper-2:#141310;
+  --paper-3:#1d1c17; --card:#16150f; --accent:#d9b36b;
+}
+body[data-palette="ivory"]{
+  --ink:#0c0c0a; --ink-2:#1f1d18; --ink-3:#4b4941; --ink-4:#858275;
+  --line:#e4dfd1; --line-2:#f0ebde; --paper:#fbf8ef; --paper-2:#f2ecdc;
+  --paper-3:#eae1c8; --card:#ffffff; --accent:#1a3a2a;
+}
+
+*,*::before,*::after{ box-sizing:border-box; }
+html,body{ margin:0; padding:0; }
+html{ -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--f-sans);
+  font-size:16px;
+  line-height:1.5;
+  overflow-x:hidden;
+  transition: background .5s var(--ease), color .5s var(--ease);
+}
+
+img,svg{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+button{ font:inherit; color:inherit; background:none; border:0; padding:0; cursor:pointer; }
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€  Typography primitives â”€â”€â”€â”€â”€â”€â”€â”€ */
+.kicker{
+  font-family:var(--f-mono);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  display:inline-flex; align-items:center; gap:10px;
+}
+.kicker::before{
+  content:""; width:24px; height:1px; background:currentColor; opacity:.6;
+}
+.eyebrow{
+  font-family:var(--f-mono);
+  font-size:10.5px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--ink-4);
+}
+
+h1,h2,h3,h4{ margin:0; font-weight:400; color:var(--ink); }
+h1{ font-family:var(--f-display); font-weight:400; line-height:.94; letter-spacing:-.02em; }
+h2{ font-family:var(--f-display); font-weight:400; line-height:.98; letter-spacing:-.015em; }
+h3{ font-family:var(--f-sans); font-weight:500; letter-spacing:-.005em; }
+p{ margin:0; color:var(--ink-2); }
+
+em{ font-family:var(--f-display); font-style:italic; font-weight:400; }
+
+/* Typography variant */
+body[data-type="modern"]{
+  --f-display:"Fraunces", Georgia, serif;
+}
+body[data-type="geometric"]{
+  --f-display:"Geist", ui-sans-serif, system-ui, sans-serif;
+}
+body[data-type="geometric"] h1,
+body[data-type="geometric"] h2{
+  font-weight:600;
+  letter-spacing:-.035em;
+  line-height:.92;
+}
+body[data-type="geometric"] em{
+  font-family:"Instrument Serif", Georgia, serif;
+  font-weight:400;
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€  Theme toggle â”€â”€â”€â”€â”€â”€â”€â”€ */
+.nav__right{ display:flex; align-items:center; gap:14px; }
+.theme-toggle{
+  display:inline-flex; align-items:center; gap:10px;
+  padding: 5px 12px 5px 5px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background: color-mix(in oklab, var(--card) 80%, transparent);
+  color:var(--ink-2);
+  font-family:var(--f-mono);
+  font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+  cursor:pointer;
+  transition: border-color .3s, background .3s, color .3s;
+}
+.theme-toggle:hover{ border-color: var(--ink); color: var(--ink); }
+.theme-toggle__track{
+  position:relative;
+  width: 34px; height: 22px;
+  border-radius:999px;
+  background: var(--paper-2);
+  border:1px solid var(--line);
+  overflow:hidden;
+}
+.theme-toggle__thumb{
+  position:absolute; top:2px; left:2px;
+  width:16px; height:16px; border-radius:50%;
+  background: var(--ink);
+  color: var(--paper);
+  display:grid; place-items:center;
+  transition: transform .45s var(--ease), background .4s;
+}
+.theme-toggle__icon{ width:10px; height:10px; position:absolute; transition: opacity .3s, transform .3s; }
+.theme-toggle__icon--sun{ opacity:1; }
+.theme-toggle__icon--moon{ opacity:0; transform: rotate(-40deg); }
+body[data-palette="noir"] .theme-toggle__thumb{ transform: translateX(12px); }
+body[data-palette="noir"] .theme-toggle__icon--sun{ opacity:0; transform: rotate(40deg); }
+body[data-palette="noir"] .theme-toggle__icon--moon{ opacity:1; transform: rotate(0); }
+
+@media (max-width: 760px){
+  .theme-toggle__label{ display:none; }
+  .theme-toggle{
+    padding: 5px;
+    border-color: color-mix(in oklab, var(--ink) 42%, var(--line));
+    background: color-mix(in oklab, var(--paper) 90%, transparent);
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--ink) 12%, transparent);
+  }
+  .theme-toggle__track{
+    border-color: color-mix(in oklab, var(--ink) 32%, var(--line));
+  }
+  .theme-toggle__thumb{
+    box-shadow: 0 1px 4px rgba(0,0,0,.28);
+  }
+  body[data-palette="noir"] .theme-toggle{
+    border-color: color-mix(in oklab, var(--paper) 36%, var(--line));
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--paper) 14%, transparent);
+  }
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€  Top chrome / nav â”€â”€â”€â”€â”€â”€â”€â”€ */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:50;
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 18px var(--pad-x);
+  font-family:var(--f-mono);
+  font-size:11.5px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink-2);
+  pointer-events:none;
+  transition: background .3s, backdrop-filter .3s, border-color .3s;
+}
+.nav.is-stuck{
+  background: color-mix(in oklab, var(--paper) 86%, transparent);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid var(--line);
+}
+.nav > *{ pointer-events:auto; }
+.nav__brand{
+  display:grid;
+  place-items:center;
+  width:22px;
+  height:22px;
+}
+.nav__brand-logo{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:block;
+}
+.nav__brand-logo--night{ display:none; }
+body[data-palette="noir"] .nav__brand-logo--day{ display:none; }
+body[data-palette="noir"] .nav__brand-logo--night{ display:block; }
+.nav__links{ display:flex; gap:28px; }
+.nav__links a{ opacity:.72; transition:opacity .2s; }
+.nav__links a:hover{ opacity:1; }
+.nav__cta{
+  padding: 8px 14px;
+  border:1px solid var(--ink);
+  border-radius:999px;
+  font-weight:500;
+  transition: background .2s, color .2s;
+}
+.nav__cta:hover{ background:var(--ink); color:var(--paper); }
+
+@media (max-width: 760px){
+  .nav__links{ display:none; }
+  .nav__brand{ width:24px; height:24px; }
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€  Intro â”€â”€â”€â”€â”€â”€â”€â”€ */
+.intro{
+  min-height:100svh;
+  display:grid;
+  place-items:center;
+  padding: 120px var(--pad-x) 80px;
+  position:relative;
+  overflow:hidden;
+}
+.intro__inner{
+  width:100%;
+  max-width: var(--max);
+  display:grid;
+  gap: clamp(18px, 3.2vw, 34px);
+}
+.intro__meta{
+  display:flex; justify-content:space-between; align-items:flex-end; gap:20px;
+  font-family:var(--f-mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ink-3);
+}
+.intro__meta span{ display:inline-block; }
+.intro__meta .sep{ display:inline-block; width:24px; height:1px; background:var(--ink-4); vertical-align:middle; margin:0 8px; }
+
+.intro__hero{
+  display:grid;
+  grid-template-columns: 1fr clamp(140px, 18vw, 210px);
+  grid-template-areas: "title logo";
+  align-items:start;
+  justify-items:stretch;
+  gap: clamp(24px, 5vw, 64px);
+}
+.intro__logo{
+  grid-area:logo;
+  width:100%;
+  aspect-ratio:1/1;
+  align-self:start;
+  justify-self:end;
+  margin:0;
+}
+.intro__logo-line{
+  display:block;
+  overflow:hidden;
+  width:100%;
+  height:100%;
+}
+.intro__logo-line > span{
+  display:block;
+  width:100%;
+  height:100%;
+  transform: translateY(110%);
+  will-change: transform;
+}
+.intro.is-in .intro__logo-line > span{
+  animation: reveal 1.15s var(--ease-out) forwards;
+  animation-delay:.14s;
+}
+.intro__logo-img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:left top;
+  display:block;
+}
+.intro__logo-img--night{ display:none; }
+body[data-palette="noir"] .intro__logo-img--day{ display:none; }
+body[data-palette="noir"] .intro__logo-img--night{ display:block; }
+
+.intro__title{
+  grid-area:title;
+  font-size: clamp(2.6496rem, 9.108vw, 9.522rem);
+  letter-spacing:-.035em;
+  line-height:.968;
+  text-align:left;
+  margin-left:0;
+  margin-right:auto;
+  margin-top:0;
+  width:100%;
+  min-height: clamp(280px, 44vh, 500px);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+.intro__title .line{
+  display:block;
+  overflow:hidden;
+  padding-bottom:.14em;
+  margin-bottom:-.14em;
+  padding-right:.08em;
+  margin-right:-.08em;
+}
+.intro__title .line > span{
+  display:block;
+  transform: translateY(110%);
+  will-change: transform;
+}
+.intro.is-in .intro__title .line > span{
+  animation: reveal 1.15s var(--ease-out) forwards;
+}
+.intro.is-in .intro__title .line:nth-child(1) > span{ animation-delay:.1s; }
+.intro.is-in .intro__title .line:nth-child(2) > span{ animation-delay:.22s; }
+.intro.is-in .intro__title .line:nth-child(3) > span{ animation-delay:.34s; }
+@keyframes reveal{
+  to{ transform: translateY(0); }
+}
+
+.intro__title em{ color:var(--ink-3); }
+
+.intro__footer{
+  display:grid;
+  grid-template-columns: 1fr auto;
+  gap: clamp(20px, 4vw, 56px);
+  align-items:end;
+  padding-top: clamp(30px, 5vw, 60px);
+  border-top:1px solid var(--line);
+}
+.intro__footer p{
+  max-width: 42ch;
+  color:var(--ink-2);
+  font-size: clamp(0.92rem, 1.058vw, 0.994rem);
+  line-height:1.5;
+  margin-left:0;
+  text-align:left;
+}
+
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding: 14px 22px 14px 22px;
+  border-radius:999px;
+  font-family:var(--f-sans);
+  font-weight:500;
+  font-size:14px;
+  letter-spacing:.01em;
+  transition: background .25s, color .25s, transform .3s;
+  border:1px solid transparent;
+  white-space:nowrap;
+}
+.btn--dark{ background:var(--ink); color:var(--paper); }
+.btn--dark:hover{ transform:translateY(-1px); }
+.btn--ghost{ border-color:var(--ink); color:var(--ink); }
+.btn--ghost:hover{ background:var(--ink); color:var(--paper); }
+.btn .arrow{ width:14px; height:14px; display:inline-block; transition:transform .3s; }
+.btn:hover .arrow{ transform: translate(4px, -4px); }
+
+@media (max-width:760px){
+  .intro{
+    min-height:100svh;
+    padding: 92px var(--pad-x) 34px;
+    place-items:stretch;
+  }
+  .intro__inner{
+    min-height: calc(100svh - 126px);
+    grid-template-rows: auto 1fr auto;
+    align-content:stretch;
+    gap: 14px;
+  }
+  .intro__meta{
+    font-size:10px;
+    letter-spacing:.1em;
+    align-items:flex-start;
+    gap:10px;
+    align-self:start;
+  }
+  .intro__meta .sep{
+    width:14px;
+    margin:0 5px;
+  }
+  .intro__hero{
+    grid-template-columns: 1fr;
+    grid-template-areas: "title";
+    gap: 0;
+    align-items:start;
+    align-self:end;
+    justify-items:start;
+    margin-top: 0;
+    position:relative;
+  }
+  .intro__logo{
+    width: clamp(96px, 29.1vw, 146px);
+    position:absolute;
+    left:0;
+    top: clamp(-140px, -19vh, -112px);
+    margin-top:0;
+    z-index:2;
+  }
+  .intro__title{
+    font-size: clamp(4.21rem, 17.66vw, 5.87rem);
+    min-height:auto;
+    line-height:.94;
+    margin:0;
+  }
+  .intro__title .line:nth-child(2) em{
+    display:inline;
+    margin-top:0;
+  }
+  .intro__title .line{
+    padding-bottom:.17em;
+    margin-bottom:-.17em;
+    padding-right:.06em;
+    margin-right:0;
+  }
+  .intro__footer{
+    grid-template-columns:1fr;
+    gap:20px;
+    padding-top:24px;
+    align-self:end;
+  }
+  .intro__footer p{
+    max-width:100%;
+    font-family:var(--f-sans);
+    font-weight:450;
+    letter-spacing:.005em;
+    font-size: clamp(.86rem, 3.8vw, 1.02rem);
+    line-height:1.5;
+  }
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€  Ticker (brand loop) â”€â”€â”€â”€â”€â”€â”€â”€ */
+.ticker{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+  background: var(--paper);
+  padding: 22px 0;
+}
+.ticker__track{
+  display:flex; gap: 64px;
+  white-space:nowrap;
+  font-family:var(--f-display);
+  font-style:italic;
+  font-size: clamp(1.6rem, 3.6vw, 3rem);
+  color:var(--ink-3);
+  animation: marquee 38s linear infinite;
+}
+.ticker__track span{ display:inline-flex; align-items:center; gap:64px; }
+.ticker__track span::after{
+  content:"âœ¦"; font-style:normal; color:var(--ink-4); font-size:.55em; opacity:.7;
+}
+@keyframes marquee{
+  from{ transform: translateX(0); }
+  to{ transform: translateX(-50%); }
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€  Hero sequence  â”€â”€â”€â”€â”€â”€â”€â”€ */
+.heros{ padding: var(--pad-y) var(--pad-x); display:grid; gap: clamp(100px, 14vw, 200px); }
+.hero{
+  display:grid;
+  gap: clamp(36px, 5vw, 64px);
+  grid-template-columns: 1fr;
+  max-width: var(--max);
+  margin: 0 auto;
+  width:100%;
+}
+.hero__media{
+  position:relative;
+  aspect-ratio: 16/9;
+  overflow:hidden;
+  border-radius:4px;
+  background:var(--paper-2);
+}
+.hero__media picture{
+  display:block;
+  width:100%;
+  height:100%;
+}
+.hero__media img{
+  width:100%; height:100%;
+  object-fit:cover;
+  transition: transform 1.2s var(--ease);
+}
+.hero__media:hover img{ transform: scale(1.02); }
+.hero__body{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 56px);
+  align-items:start;
+}
+.hero__body h2{
+  font-size: clamp(2rem, 4.4vw, 4.2rem);
+}
+.hero__body p{
+  font-size: clamp(1rem, 1.1vw, 1.12rem);
+  color:var(--ink-2);
+  max-width: 46ch;
+}
+.hero__body p + p{ margin-top: 12px; }
+.hero__tag{
+  display:grid; gap:10px;
+  font-family:var(--f-mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+}
+.hero__tag-num{
+  font-family:var(--f-display);
+  font-style:italic;
+  font-size: clamp(3rem, 5vw, 4.4rem);
+  color:var(--ink-2);
+  line-height:1;
+}
+.hero__tag--outside{ display:none; }
+
+.hero--reverse .hero__body{ grid-template-columns: 1fr 1fr; }
+
+/* Hero 01: reposicionamento solicitado (desktop only)
+   Ponto A -> tag "01"
+   Ponto B -> bloco de texto principal */
+@media (min-width: 861px){
+  #hero-01{
+    position: relative;
+    padding-top: 0;
+    grid-template-rows: auto 1fr;
+    row-gap: clamp(12px, 1.8vw, 20px);
+  }
+  #hero-01 .hero__tag--outside{
+    display:grid;
+    grid-row:1;
+    justify-self:start;
+    text-align:left;
+  }
+  #hero-01 .hero__media,
+  #hero-01 .hero__body{
+    grid-row:2;
+    grid-column:1;
+  }
+  #hero-01 .hero__body{
+    position: relative;
+    display: block;
+    z-index: 2;
+    pointer-events: none;
+  }
+  #hero-01 .hero__copy .hero__tag{
+    position: static;
+    pointer-events: auto;
+    margin-bottom: clamp(16px, 1.8vw, 22px);
+    display:none;
+  }
+  #hero-01 .hero__copy{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: clamp(30px, 2.9vw, 58px);
+    width: clamp(340px, 33.5vw, 520px);
+    aspect-ratio: 1 / 1;
+    display: grid;
+    align-content: start;
+    gap: clamp(16px, 1.8vw, 24px);
+    padding: clamp(20px, 1.9vw, 28px);
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    pointer-events: auto;
+  }
+  #hero-01 .hero__copy > div{
+    margin-top: 0 !important;
+  }
+  #hero-01 .hero__copy h2{
+    font-size: clamp(2.1rem, 3.63vw, 3.8rem);
+    color: color-mix(in oklab, var(--ink) 88%, var(--accent) 12%);
+    line-height: .96;
+    text-shadow: 0 1px 14px rgba(255,255,255,.5);
+  }
+  #hero-01 .hero__copy p{
+    max-width: 38ch;
+    font-size: clamp(1.1rem, 1.08vw, 1.2rem);
+    color: color-mix(in oklab, var(--ink-2) 86%, var(--accent) 14%);
+    text-shadow: 0 1px 12px rgba(255,255,255,.44);
+  }
+  body[data-palette="noir"] #hero-01 .hero__copy h2{
+    color: color-mix(in oklab, var(--paper) 94%, transparent);
+    text-shadow: 0 2px 20px rgba(0,0,0,.62);
+  }
+  body[data-palette="noir"] #hero-01 .hero__copy p{
+    color: color-mix(in oklab, var(--paper) 82%, transparent);
+    text-shadow: 0 2px 16px rgba(0,0,0,.58);
+  }
+  #hero-02,
+  #hero-03{
+    position: relative;
+    padding-top: 0;
+    grid-template-rows: auto 1fr;
+    row-gap: clamp(12px, 1.8vw, 20px);
+  }
+  #hero-02 .hero__tag--outside{
+    display:grid;
+    grid-row:1;
+    justify-self:end;
+    text-align:right;
+  }
+  #hero-03 .hero__tag--outside{
+    display:grid;
+    grid-row:1;
+    justify-self:start;
+    text-align:left;
+  }
+  #hero-02 .hero__media,
+  #hero-02 .hero__body,
+  #hero-03 .hero__media,
+  #hero-03 .hero__body{
+    grid-row:2;
+    grid-column:1;
+  }
+  #hero-02 .hero__body,
+  #hero-03 .hero__body{
+    position: relative;
+    display: block;
+    z-index: 2;
+    pointer-events: none;
+  }
+  #hero-02 .hero__copy,
+  #hero-03 .hero__copy{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: clamp(340px, 33.5vw, 520px);
+    aspect-ratio: 1 / 1;
+    display: grid;
+    align-content: start;
+    gap: clamp(16px, 1.8vw, 24px);
+    padding: clamp(20px, 1.9vw, 28px);
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    pointer-events: auto;
+  }
+  #hero-02 .hero__copy{
+    right: clamp(30px, 2.9vw, 58px);
+  }
+  #hero-03 .hero__copy{
+    left: clamp(30px, 2.9vw, 58px);
+  }
+  #hero-02 .hero__copy .hero__tag,
+  #hero-03 .hero__copy .hero__tag{
+    position: static;
+    margin-bottom: clamp(16px, 1.8vw, 22px);
+    display:none;
+  }
+  #hero-02 .hero__copy > div,
+  #hero-03 .hero__copy > div{
+    margin-top: 0 !important;
+  }
+  #hero-02 .hero__copy h2,
+  #hero-03 .hero__copy h2{
+    font-size: clamp(1.9rem, 3.3vw, 3.45rem);
+    color: color-mix(in oklab, var(--ink) 88%, var(--accent) 12%);
+    line-height: .96;
+    text-shadow: 0 1px 14px rgba(255,255,255,.5);
+  }
+  #hero-02 .hero__copy p,
+  #hero-03 .hero__copy p{
+    max-width: 38ch;
+    font-size: clamp(1rem, .98vw, 1.08rem);
+    color: color-mix(in oklab, var(--ink-2) 86%, var(--accent) 14%);
+    text-shadow: 0 1px 12px rgba(255,255,255,.44);
+  }
+  #hero-02 .hero__copy strong{
+    color: var(--ink) !important;
+  }
+  #hero-03 .hero__copy .btn--ghost{
+    border-color: #111;
+    color: #111;
+    background: rgba(255,255,255,.45);
+  }
+  #hero-03 .hero__copy .btn--ghost:hover{
+    border-color: #111;
+    background: #111;
+    color: #f4f1ea;
+  }
+  body[data-palette="noir"] #hero-02 .hero__copy h2,
+  body[data-palette="noir"] #hero-03 .hero__copy h2{
+    color: color-mix(in oklab, var(--paper) 94%, transparent);
+    text-shadow: 0 2px 20px rgba(0,0,0,.62);
+  }
+  body[data-palette="noir"] #hero-02 .hero__copy p,
+  body[data-palette="noir"] #hero-03 .hero__copy p{
+    color: color-mix(in oklab, var(--paper) 82%, transparent);
+    text-shadow: 0 2px 16px rgba(0,0,0,.58);
+  }
+  body[data-palette="noir"] #hero-02 .hero__copy strong{
+    color: #111 !important;
+  }
+}
+
+@media (max-width: 860px){
+  .hero__body{ grid-template-columns: 1fr; gap:24px; }
+  .hero__media{ aspect-ratio: 4/3; }
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€  Section band  â”€â”€â”€â”€â”€â”€â”€â”€ */
+section.band{
+  padding: var(--pad-y) var(--pad-x);
+  max-width: var(--max);
+  margin: 0 auto;
+  width:100%;
+}
+.band__head{
+  display:grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(24px, 4vw, 60px);
+  align-items:end;
+  margin-bottom: clamp(40px, 6vw, 80px);
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+.band__head h2{
+  font-size: clamp(2.2rem, 5.2vw, 4.8rem);
+}
+.band__head .kicker{ align-self:start; margin-top:6px; }
+@media (max-width: 760px){
+  .band__head{ grid-template-columns: 1fr; gap:16px; align-items:start; }
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€  Posicionamento + VÃ­deo â”€â”€â”€â”€â”€â”€â”€â”€ */
+.posicionamento{
+  display:grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(40px, 6vw, 100px);
+  align-items:start;
+}
+.posicionamento h2{ font-size: clamp(2rem, 4.2vw, 3.6rem); max-width: 18ch; }
+.posicionamento p{ max-width: 48ch; color:var(--ink-2); }
+.posicionamento p + p{ margin-top: 16px; }
+.video-card{
+  background: var(--card);
+  border:1px solid var(--line);
+  border-radius:4px;
+  overflow:hidden;
+}
+.video-card__thumb{
+  width:100%;
+  aspect-ratio: 1/1;
+  position:relative;
+  background: linear-gradient(135deg, var(--paper-2), var(--paper-3));
+  display:block;
+  cursor:pointer;
+  overflow:hidden;
+  border:0;
+  padding:0;
+  margin:0;
+  appearance:none;
+  color:inherit;
+}
+.video-card__preview{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:cover;
+  transform:scale(1.80);
+  transform-origin:center;
+  pointer-events:none;
+  background:#000;
+}
+.video-card__thumb::after{
+  content:"";
+  position:absolute; inset:0;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0) 40%, rgba(0,0,0,.08) 100%);
+  pointer-events:none;
+}
+.video-card__play{
+  width:72px; height:72px; border-radius:999px;
+  background: var(--ink); color:var(--paper);
+  display:grid; place-items:center;
+  transition: transform .4s var(--ease), background .3s;
+  z-index:2;
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+}
+.video-card__thumb:hover .video-card__play{ transform: translate(-50%, -50%) scale(1.08); }
+.video-card__play svg{ width:22px; height:22px; margin-left:3px; }
+.video-card__label{
+  position:absolute; top:16px; left:18px;
+  font-family:var(--f-mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-3);
+}
+.video-card__time{
+  position:absolute; top:16px; right:18px;
+  font-family:var(--f-mono); font-size:10.5px; letter-spacing:.14em; color:var(--ink-3);
+}
+.video-card__title{
+  padding: 20px 22px 22px;
+  font-family:var(--f-sans);
+  font-size: 1.02rem;
+  font-weight:500;
+  border-top:1px solid var(--line);
+  display:flex; justify-content:space-between; align-items:center;
+}
+.video-card__title .arrow{ font-family:var(--f-mono); color:var(--ink-3); font-size:.85em; }
+
+@media (max-width: 900px){
+  .posicionamento{ grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px){
+  .posicionamento .video-card{
+    width:100%;
+    max-width:min(320px, 90vw);
+    margin-inline:auto;
+  }
+  .video-card__thumb{
+    aspect-ratio: 4/5;
+  }
+  .video-card__title{
+    padding:16px 16px 18px;
+    font-size:1.01rem;
+  }
+  .video-card__play{
+    width:64px;
+    height:64px;
+  }
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€  Capacidades  â”€â”€â”€â”€â”€â”€â”€â”€ */
+.capabilities-list{
+  list-style:none; padding:0; margin:0;
+  border-top:1px solid var(--line);
+}
+.capabilities-list li{
+  display:grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: clamp(16px, 3vw, 40px);
+  align-items:center;
+  padding: clamp(18px, 2.2vw, 28px) 4px;
+  border-bottom:1px solid var(--line);
+  transition: background .25s, padding .35s var(--ease);
+  cursor: default;
+}
+.capabilities-list li:hover{
+  background: color-mix(in oklab, var(--ink) 4%, transparent);
+  padding-left: 16px;
+}
+.capabilities-list .num{
+  font-family:var(--f-mono); font-size:11px; letter-spacing:.12em; color:var(--ink-4);
+}
+.capabilities-list .name{
+  font-family:var(--f-display);
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  color:var(--ink);
+  letter-spacing:-.01em;
+  line-height:1.1;
+}
+.capabilities-list .tag{
+  font-family:var(--f-mono);
+  font-size:10.5px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--ink-3);
+}
+
+@media (max-width: 640px){
+  .capabilities-list li{ grid-template-columns: 42px 1fr; }
+  .capabilities-list .tag{ display:none; }
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€  MÃ©todo  â”€â”€â”€â”€â”€â”€â”€â”€ */
+.method{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+}
+.method__step{
+  display:grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(16px, 3vw, 28px);
+  align-items:start;
+  padding: clamp(28px, 4vw, 44px) clamp(20px, 3vw, 36px);
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  min-height: 180px;
+  position:relative;
+  background: var(--paper);
+  transition: background .3s;
+}
+.method__step:hover{ background: var(--card); }
+.method__num{
+  font-family:var(--f-display);
+  font-style:italic;
+  font-size: clamp(2.6rem, 4vw, 3.6rem);
+  line-height:.9;
+  color:var(--ink-3);
+  min-width: 2.4ch;
+}
+.method__text{
+  display:grid; gap:10px; padding-top:10px;
+}
+.method__text .eyebrow{ color:var(--ink-4); }
+.method__text h3{
+  font-family:var(--f-display);
+  font-weight:400;
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  line-height:1.15;
+  letter-spacing:-.005em;
+  color:var(--ink);
+}
+@media (max-width: 780px){
+  .method{ grid-template-columns: 1fr; }
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€  Antes / Depois  â”€â”€â”€â”€â”€â”€â”€â”€ */
+.beforeafter-wrap{
+  display:grid;
+  gap:14px;
+}
+.beforeafter__controls{
+  display:flex;
+  justify-content:flex-end;
+  gap:8px;
+}
+.beforeafter__toggle{
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background:transparent;
+  color:var(--ink-3);
+  font-family:var(--f-mono);
+  font-size:11px;
+  letter-spacing:.1em;
+}
+.beforeafter__toggle.is-active{
+  border-color:var(--accent);
+  color:var(--accent);
+}
+.beforeafter{
+  display:grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--line);
+  border:1px solid var(--line);
+  border-radius: 4px; overflow:hidden;
+}
+.ba-col{
+  background: var(--paper);
+  padding: clamp(30px, 4vw, 56px);
+  display:grid;
+  align-content:start;
+}
+.ba-col--after{ background: var(--card); }
+.ba-stack{
+  display:grid;
+  gap:22px;
+}
+.ba-col h3{
+  font-family:var(--f-display);
+  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  font-weight:400;
+  letter-spacing:-.01em;
+  display:flex; align-items:baseline; gap:14px;
+}
+.ba-col h3::before{
+  content:""; width:10px; height:10px; border-radius:50%;
+  background: var(--ink-4);
+  display:inline-block; flex-shrink:0;
+}
+.ba-col--after h3::before{ background: var(--accent); }
+.ba-col ul{
+  list-style:none; padding:0; margin:0;
+  display:grid; gap:14px;
+}
+.ba-col li{
+  display:grid;
+  grid-template-columns: 28px 1fr;
+  align-items:baseline;
+  gap:12px;
+  font-family:var(--f-sans);
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
+  color:var(--ink-2);
+  padding-bottom: 14px;
+  border-bottom:1px dashed var(--line);
+}
+.ba-col li:last-child{ border-bottom:0; padding-bottom:0; }
+.ba-col li::before{
+  content: attr(data-n);
+  font-family:var(--f-mono);
+  font-size: 10px; color: var(--ink-4); letter-spacing:.12em;
+}
+.ba-media{
+  margin:0;
+  aspect-ratio:1/1;
+  border-radius:4px;
+  overflow:hidden;
+  border:1px solid var(--line);
+}
+.ba-media img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.ba-copy, .ba-media{ display:block; }
+
+/* Estado 1: A texto, B imagem */
+.beforeafter[data-active="before"] .ba-col--before .ba-copy{
+  display:block;
+}
+.beforeafter[data-active="before"] .ba-col--before .ba-media{
+  display:none;
+}
+.beforeafter[data-active="before"] .ba-col--after .ba-media{
+  display:block;
+}
+.beforeafter[data-active="before"] .ba-col--after .ba-copy{
+  display:none;
+}
+.beforeafter[data-active="before"] .ba-col--after{
+  padding:0;
+}
+.beforeafter[data-active="before"] .ba-col--after .ba-stack{
+  height:100%;
+  gap:0;
+}
+.beforeafter[data-active="before"] .ba-col--after .ba-media{
+  height:100%;
+  aspect-ratio:auto;
+  border:0;
+  border-radius:0;
+}
+
+/* Estado 2: A imagem, B texto */
+.beforeafter[data-active="after"] .ba-col--before .ba-media{
+  display:block;
+}
+.beforeafter[data-active="after"] .ba-col--before .ba-copy{
+  display:none;
+}
+.beforeafter[data-active="after"] .ba-col--after .ba-copy{
+  display:block;
+}
+.beforeafter[data-active="after"] .ba-col--after .ba-media{
+  display:none;
+}
+.beforeafter[data-active="after"] .ba-col--before{
+  padding:0;
+}
+.beforeafter[data-active="after"] .ba-col--before .ba-stack{
+  height:100%;
+  gap:0;
+}
+.beforeafter[data-active="after"] .ba-col--before .ba-media{
+  height:100%;
+  aspect-ratio:auto;
+  border:0;
+  border-radius:0;
+}
+
+@media (max-width: 780px){
+  .beforeafter{ grid-template-columns: 1fr; }
+  .beforeafter__controls{ justify-content:flex-start; }
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€  Statement â”€â”€â”€â”€â”€â”€â”€â”€ */
+.statement{
+  padding: var(--pad-y) var(--pad-x);
+  max-width: var(--max); margin: 0 auto;
+  display:grid;
+  grid-template-columns: 1fr; gap: clamp(24px, 4vw, 48px);
+  text-align:left;
+}
+.statement h2{
+  font-family:var(--f-display);
+  font-size: clamp(2.6rem, 7.5vw, 7.5rem);
+  letter-spacing:-.025em;
+  line-height:.94;
+  max-width: 16ch;
+}
+.statement h2 em{ color:var(--ink-3); }
+.statement__row{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(24px, 4vw, 60px);
+  padding-top: clamp(24px, 4vw, 44px);
+  border-top:1px solid var(--line);
+  align-items:start;
+}
+.statement__row p{ max-width: 44ch; color:var(--ink-2); font-size: clamp(1rem, 1.2vw, 1.12rem); }
+.statement__tags{
+  display:flex; flex-wrap:wrap; gap: 8px 10px;
+}
+.statement__tags span{
+  font-family:var(--f-mono);
+  font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--ink-2);
+  padding: 7px 12px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background: var(--card);
+}
+@media (max-width: 760px){
+  .statement__row{ grid-template-columns: 1fr; }
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€  CTA final â”€â”€â”€â”€â”€â”€â”€â”€ */
+.cta{
+  padding: var(--pad-y) var(--pad-x);
+  background: var(--ink);
+  color: var(--paper);
+  transition: background .5s var(--ease), color .5s var(--ease);
+}
+.cta__inner{
+  max-width: var(--max); margin: 0 auto;
+  display:grid; gap: 40px;
+}
+.cta h2{
+  color: var(--paper);
+  font-size: clamp(2.4rem, 6.5vw, 6rem);
+  line-height:.95;
+  letter-spacing:-.025em;
+  max-width: 18ch;
+}
+.cta h2 em{ color: color-mix(in oklab, var(--paper) 55%, transparent); }
+.cta .kicker{ color: color-mix(in oklab, var(--paper) 60%, transparent); }
+.cta__row{
+  display:grid; grid-template-columns: 1fr auto; gap: 30px;
+  align-items:end;
+  padding-top: 30px;
+  border-top: 1px solid color-mix(in oklab, var(--paper) 18%, transparent);
+}
+.cta__row p{
+  color: color-mix(in oklab, var(--paper) 80%, transparent);
+  max-width: 44ch;
+}
+.cta__buttons{ display:flex; gap: 12px; flex-wrap:wrap; }
+.cta .btn--dark{ background: var(--paper); color: var(--ink); }
+.cta .btn--ghost{ border-color: color-mix(in oklab, var(--paper) 50%, transparent); color: var(--paper); }
+.cta .btn--ghost:hover{ background: var(--paper); color: var(--ink); }
+
+@media (max-width: 760px){
+  .cta__row{ grid-template-columns: 1fr; }
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€  Footer â”€â”€â”€â”€â”€â”€â”€â”€ */
+.foot{
+  padding: 44px var(--pad-x) 32px;
+  border-top:1px solid var(--line);
+  font-family:var(--f-mono);
+  font-size:11.5px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+}
+.foot__inner{ max-width:var(--max); margin:0 auto; display:grid; gap: 26px; }
+.foot__top{
+  display:grid; grid-template-columns: 1fr auto 1fr; gap: 24px; align-items:end;
+  padding-bottom: 30px; border-bottom:1px solid var(--line);
+}
+.foot__brand{
+  font-family:var(--f-display);
+  font-style:italic;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  text-transform:none; letter-spacing:-.01em; color: var(--ink);
+  line-height:1;
+}
+.foot__links{ display:flex; gap:20px; justify-content:center; }
+.foot__links a{ opacity:.75; transition:opacity .2s; }
+.foot__links a:hover{ opacity:1; }
+.foot__right{ text-align:right; }
+.foot__meta{
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap: 10px;
+  color:var(--ink-4);
+}
+@media (max-width: 760px){
+  .foot__top{ grid-template-columns: 1fr; text-align:left; }
+  .foot__links{ justify-content:flex-start; }
+  .foot__right{ text-align:left; }
+}
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€  Modal â”€â”€â”€â”€â”€â”€â”€â”€ */
+.modal{
+  position:fixed; inset:0; z-index:200;
+  background: color-mix(in oklab, var(--ink) 70%, transparent);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display:none;
+  align-items:center; justify-content:center;
+  padding:20px;
+}
+.modal.is-open{ display:flex; animation: fadeIn .3s ease; }
+@keyframes fadeIn{ from{ opacity:0 } to{ opacity:1 } }
+.modal__panel{
+  width:min(883px, 92%);
+  background: var(--card);
+  border-radius: 6px;
+  padding: clamp(20px, 3vw, 36px);
+  position:relative;
+}
+.modal__close{
+  position:absolute; top:14px; right:14px;
+  width:36px; height:36px; border-radius:999px;
+  background: var(--paper); border:1px solid var(--line);
+  display:grid; place-items:center;
+}
+.modal__frame{
+  aspect-ratio: 1/1;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#000;
+  border-radius: 4px;
+  overflow:hidden;
+  margin-bottom: 18px;
+}
+.modal__frame::before,
+.modal__frame::after{
+  display:none;
+}
+.modal__frame-close{
+  position:absolute;
+  top:12px;
+  right:12px;
+  width:42px;
+  height:42px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.72);
+  background: rgba(0,0,0,.82);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  z-index:5;
+}
+.modal__frame-close svg{
+  width:14px;
+  height:14px;
+}
+.modal__video{
+  width:auto;
+  height:100%;
+  max-width:56.25%;
+  aspect-ratio:9/16;
+  display:block;
+  object-fit:cover;
+  object-position:center;
+  background:#000;
+  position:relative;
+  z-index:1;
+}
+.modal h3{ margin:0 0 6px; font-family:var(--f-display); font-weight:400; font-size: 1.6rem; letter-spacing:-.01em; }
+.modal p{ color:var(--ink-3); max-width: 60ch; }
+
+/* â”€â”€â”€â”€â”€â”€â”€â”€  Scroll reveal util â”€â”€â”€â”€â”€â”€â”€â”€ */
+.reveal{ opacity:0; transform: translateY(18px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+.reveal.is-in{ opacity:1; transform: translateY(0); }
+
+@media (max-width: 860px){
+  .video-card__thumb{ aspect-ratio: 9/16; }
+  .modal__frame{ aspect-ratio: 9/16; }
+}
+
+@media (max-width: 760px){
+  .modal{
+    padding:12px;
+    align-items:flex-start;
+    overflow-y:auto;
+  }
+  .modal__panel{
+    width:min(340px, 90vw);
+    padding:12px;
+    border-radius:4px;
+    margin-top:10px;
+    margin-bottom:16px;
+  }
+  .modal__frame{
+    margin-bottom:12px;
+  }
+  .modal__video{
+    width:auto;
+    height:100%;
+    max-width:56.25%;
+    aspect-ratio:9/16;
+    object-fit:cover;
+    object-position:center;
+  }
+  .modal__frame-close{
+    top:8px;
+    right:8px;
+    width:36px;
+    height:36px;
+    border-color:rgba(255,255,255,.92);
+    background:rgba(0,0,0,.9);
+    box-shadow:0 6px 16px rgba(0,0,0,.45);
+    z-index:8;
+  }
+}
+
+@media (max-width: 760px){
+  /* Mobile: card do vÃ­deo menor, centralizado e em 1:1 */
+  .posicionamento .video-card{
+    display:block;
+    width:100%;
+    max-width:min(300px, 84vw);
+    margin-inline:auto;
+    justify-self:center;
+  }
+  #posicionamento .posicionamento > div:first-child > div{
+    display:flex;
+    justify-content:center;
+  }
+  .video-card__thumb{
+    aspect-ratio:1/1 !important;
+  }
+  .video-card__preview{
+    object-position:center center;
+    transform:scale(1.80);
+  }
+
+  /* Mobile: enquadramento da imagem 01 puxado para a esquerda
+     para mostrar mais conteÃºdo na lateral direita */
+  #hero-01 .hero__media img{
+    object-position:68% center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.01s !important; animation-delay:0s !important; transition-duration:.01s !important; }
+}
+</style>
+</head>
+
+<body data-palette="bone" data-type="editorial">
+
+  <!-- Nav -->
+  <nav class="nav" id="nav">
+    <div class="nav__brand">
+      <img class="nav__brand-logo nav__brand-logo--day" src="uploads/logo-dia.png?v=20260425-204103" alt="Logo AW modo dia">
+      <img class="nav__brand-logo nav__brand-logo--night" src="uploads/logo-noite.png?v=20260425-204118" alt="Logo AW modo noite">
+    </div>
+    <div class="nav__links">
+      <a href="#posicionamento">Posicionamento</a>
+      <a href="#capacidades">Capacidades</a>
+      <a href="#metodo">MÃ©todo</a>
+      <a href="#transformacao">Resultado</a>
+    </div>
+    <div class="nav__right">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Alternar modo dia / noite" type="button">
+        <span class="theme-toggle__track" aria-hidden="true">
+          <span class="theme-toggle__thumb">
+            <svg class="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5 5l1.4 1.4M17.6 17.6L19 19M5 19l1.4-1.4M17.6 6.4L19 5"/></svg>
+            <svg class="theme-toggle__icon theme-toggle__icon--moon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.5 14.8a8 8 0 1 1-9.3-11 .7.7 0 0 1 .9.9 6.5 6.5 0 0 0 8.4 8.4.7.7 0 0 1 .9.7z"/></svg>
+          </span>
+        </span>
+        <span class="theme-toggle__label" data-day="Dia" data-night="Noite">Dia</span>
+      </button>
+      <a class="nav__cta" href="#cta-final">Conversar</a>
+    </div>
+  </nav>
+
+  <!-- Intro -->
+  <section class="intro" id="intro">
+    <div class="intro__inner">
+      <div class="intro__meta">
+        <span>AW <span class="sep"></span> Consultoria de IA Aplicada</span>
+        <span>Moda &amp; Marcas</span>
+      </div>
+
+      <div class="intro__hero">
+        <figure class="intro__logo" aria-label="Logo da AW">
+          <span class="intro__logo-line">
+            <span>
+              <img class="intro__logo-img intro__logo-img--day" src="uploads/logo-dia.png?v=20260425-204103" alt="Logo da AW modo dia">
+              <img class="intro__logo-img intro__logo-img--night" src="uploads/logo-noite.png?v=20260425-204118" alt="Logo da AW modo noite">
+            </span>
+          </span>
+        </figure>
+
+        <h1 class="intro__title">
+          <span class="line"><span>InteligÃªncia</span></span>
+          <span class="line"><span>que opera <em>dentro</em></span></span>
+          <span class="line"><span>da sua empresa.</span></span>
+        </h1>
+      </div>
+
+      <div class="intro__footer">
+        <p>
+          A AW identifica gargalos e implementa soluÃ§Ãµes digitais â€” IA, automaÃ§Ãµes e sistemas sob medida â€” para transformar a operaÃ§Ã£o com mais clareza e produtividade.
+        </p>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="#cta-final" class="btn btn--dark">
+            Conversar com a AW
+            <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 13 L13 3 M6 3 H13 V10"/>
+            </svg>
+          </a>
+          <a href="#posicionamento" class="btn btn--ghost">Ver o mÃ©todo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ticker -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Moda</span><span>ConfecÃ§Ã£o</span><span>Marcas</span><span>IA aplicada</span><span>AutomaÃ§Ãµes</span><span>Sistemas sob medida</span><span>Agentes</span><span>Workflows</span>
+      <span>Moda</span><span>ConfecÃ§Ã£o</span><span>Marcas</span><span>IA aplicada</span><span>AutomaÃ§Ãµes</span><span>Sistemas sob medida</span><span>Agentes</span><span>Workflows</span>
+    </div>
+  </div>
+
+  <!-- Hero sequence (3 painÃ©is com as fotos do letreiro) -->
+  <section class="heros" aria-label="SequÃªncia de apresentaÃ§Ã£o">
+
+    <article class="hero reveal" id="hero-01">
+      <div class="hero__tag hero__tag--outside">
+        <span class="hero__tag-num">01</span>
+        <span>Consultoria aplicada</span>
+      </div>
+      <div class="hero__media">
+        <img src="uploads/imagem-06.png" alt="ReuniÃ£o da AW com equipe em showroom de moda.">
+      </div>
+      <div class="hero__body">
+        <div class="hero__copy">
+          <div class="hero__tag">
+            <span class="hero__tag-num">01</span>
+            <span>Consultoria aplicada</span>
+          </div>
+          <h2>IA, automaÃ§Ãµes e sistemas <em>sob medida</em> para a sua empresa.</h2>
+          <div style="margin-top:22px;">
+            <p>Cada operaÃ§Ã£o tem seu prÃ³prio ritmo, pessoas e pontos cegos. A AW constrÃ³i soluÃ§Ãµes ajustadas a esse cenÃ¡rio real â€” nÃ£o pacotes prontos.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="hero reveal" id="hero-02">
+      <div class="hero__tag hero__tag--outside">
+        <span class="hero__tag-num">02</span>
+        <span>EstratÃ©gia antes da ferramenta</span>
+      </div>
+      <div class="hero__media">
+        <picture>
+          <source media="(min-width: 861px)" srcset="uploads/imagem-07.png">
+          <img src="uploads/imagem-06.png" alt="Consultor AW conversando com cliente em loja de moda.">
+        </picture>
+      </div>
+      <div class="hero__body">
+        <div class="hero__copy">
+          <div class="hero__tag">
+            <span class="hero__tag-num">02</span>
+            <span>EstratÃ©gia antes da ferramenta</span>
+          </div>
+          <h2>Antes de automatizar, a AW entende a <em>operaÃ§Ã£o real</em> da empresa.</h2>
+          <div style="margin-top:22px;">
+            <p>O trabalho comeÃ§a no diagnÃ³stico: dores, retrabalho, dependÃªncias, fluxos manuais e oportunidades de IA aplicada.</p>
+            <p><strong style="color:var(--ink);">O resultado Ã© uma soluÃ§Ã£o pensada para o negÃ³cio</strong>, nÃ£o uma camada genÃ©rica de tecnologia.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="hero reveal" id="hero-03">
+      <div class="hero__tag hero__tag--outside">
+        <span class="hero__tag-num">03</span>
+        <span>ConstruÃ§Ã£o prÃ¡tica</span>
+      </div>
+      <div class="hero__media">
+        <picture>
+          <source media="(min-width: 861px)" srcset="uploads/imagem-07.png">
+          <img src="uploads/imagem-07.png" alt="Equipe AW em reuniÃ£o de construÃ§Ã£o de soluÃ§Ãµes com design de moda.">
+        </picture>
+      </div>
+      <div class="hero__body">
+        <div class="hero__copy">
+          <div class="hero__tag">
+            <span class="hero__tag-num">03</span>
+            <span>ConstruÃ§Ã£o prÃ¡tica</span>
+          </div>
+          <h2>Da anÃ¡lise ao protÃ³tipo. Do protÃ³tipo Ã  <em>soluÃ§Ã£o funcionando</em>.</h2>
+          <div style="margin-top:22px;">
+            <p>A AW estrutura, constrÃ³i e treina a equipe para usar sistemas, agentes e automaÃ§Ãµes com clareza no dia a dia.</p>
+            <a href="#metodo" class="btn btn--ghost" style="margin-top:22px;">
+              Ver mÃ©todo
+              <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 13 L13 3 M6 3 H13 V10"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- Posicionamento + VÃ­deo -->
+  <section class="band" id="posicionamento">
+    <div class="band__head">
+      <span class="kicker">Posicionamento</span>
+      <h2>Transformar conhecimento operacional em <em>sistemas inteligentes</em>.</h2>
+    </div>
+
+    <div class="posicionamento reveal">
+      <div>
+        <p>A AW combina visÃ£o estratÃ©gica, leitura visual e execuÃ§Ã£o tÃ©cnica para criar automaÃ§Ãµes, sistemas e agentes que reduzem esforÃ§o manual.</p>
+        <p>O mÃ©todo conecta diagnÃ³stico, desenho de workflow, prototipaÃ§Ã£o, implementaÃ§Ã£o e treinamento â€” para que a tecnologia vire rotina, nÃ£o mais uma ferramenta na prateleira.</p>
+        <div style="margin-top:28px;">
+          <a href="#cta-final" class="btn btn--ghost">
+            Quero um diagnÃ³stico
+            <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 13 L13 3 M6 3 H13 V10"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <figure class="video-card" style="margin:0;">
+        <button class="video-card__thumb" id="open-video" aria-label="Abrir vÃ­deo de apresentaÃ§Ã£o">
+          <video class="video-card__preview" id="video-thumb" muted playsinline preload="metadata" aria-hidden="true">
+            <source src="https://pub-6cce15b3f2124ca98e250ca20770011c.r2.dev/Avatar_Video%20(1).mp4" type="video/mp4">
+          </video>
+          <span class="video-card__play">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+          </span>
+        </button>
+        <figcaption class="video-card__title">
+          <span>Como a AW atua dentro da empresa</span>
+          <span class="arrow">ASSISTIR â†’</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Capacidades -->
+  <section class="band" id="capacidades">
+    <div class="band__head">
+      <span class="kicker">Capacidades</span>
+      <h2>O que a AW pode construir <em>para a empresa</em>.</h2>
+    </div>
+
+    <ol class="capabilities-list reveal">
+      <li><span class="num">001</span><span class="name">Landing pages modernas.</span><span class="tag">web Â· conversÃ£o</span></li>
+      <li><span class="num">002</span><span class="name">Sites institucionais</span><span class="tag">web Â· marca</span></li>
+      <li><span class="num">003</span><span class="name">Aplicativos nativos iOS/Android</span><span class="tag">mobile Â· iOS/Android</span></li>
+      <li><span class="num">004</span><span class="name">Sistemas internos personalizados</span><span class="tag">interno Â· operaÃ§Ã£o</span></li>
+      <li><span class="num">005</span><span class="name">Sistemas com IA 24/7</span><span class="tag">plataforma Â· IA</span></li>
+      <li><span class="num">006</span><span class="name">Agentes autÃ´nomos 24/7</span><span class="tag">agentes Â· execuÃ§Ã£o</span></li>
+      <li><span class="num">007</span><span class="name">Setores com agentes</span><span class="tag">agentes Â· equipes</span></li>
+      <li><span class="num">008</span><span class="name">Workflows com IA</span><span class="tag">fluxos Â· orquestraÃ§Ã£o</span></li>
+      <li><span class="num">009</span><span class="name">Treinamento de equipe</span><span class="tag">pessoas Â· adoÃ§Ã£o</span></li>
+    </ol>
+  </section>
+
+  <!-- MÃ©todo -->
+  <section class="band" id="metodo">
+    <div class="band__head">
+      <span class="kicker">MÃ©todo completo</span>
+      <h2>Como a AW atua <em>dentro da empresa</em>.</h2>
+    </div>
+
+    <div class="method reveal">
+      <div class="method__step">
+        <div class="method__num">01</div>
+        <div class="method__text">
+          <span class="eyebrow">ImersÃ£o</span>
+          <h3>Entrevista com a empresa</h3>
+        </div>
+      </div>
+      <div class="method__step">
+        <div class="method__num">02</div>
+        <div class="method__text">
+          <span class="eyebrow">Escuta</span>
+          <h3>Levantamento de dores, falhas e gargalos</h3>
+        </div>
+      </div>
+      <div class="method__step">
+        <div class="method__num">03</div>
+        <div class="method__text">
+          <span class="eyebrow">Leitura</span>
+          <h3>DiagnÃ³stico estratÃ©gico</h3>
+        </div>
+      </div>
+      <div class="method__step">
+        <div class="method__num">04</div>
+        <div class="method__text">
+          <span class="eyebrow">Desenho</span>
+          <h3>CriaÃ§Ã£o do workflow ideal com IA</h3>
+        </div>
+      </div>
+      <div class="method__step">
+        <div class="method__num">05</div>
+        <div class="method__text">
+          <span class="eyebrow">PrototipaÃ§Ã£o</span>
+          <h3>ApresentaÃ§Ã£o de protÃ³tipos e soluÃ§Ãµes</h3>
+        </div>
+      </div>
+      <div class="method__step">
+        <div class="method__num">06</div>
+        <div class="method__text">
+          <span class="eyebrow">Alinhamento</span>
+          <h3>DefiniÃ§Ã£o das implementaÃ§Ãµes</h3>
+        </div>
+      </div>
+      <div class="method__step">
+        <div class="method__num">07</div>
+        <div class="method__text">
+          <span class="eyebrow">ExecuÃ§Ã£o</span>
+          <h3>ConstruÃ§Ã£o das soluÃ§Ãµes</h3>
+        </div>
+      </div>
+      <div class="method__step">
+        <div class="method__num">08</div>
+        <div class="method__text">
+          <span class="eyebrow">AdoÃ§Ã£o</span>
+          <h3>Treinamento da equipe</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Antes / Depois -->
+  <section class="band" id="transformacao">
+    <div class="band__head">
+      <span class="kicker">Antes Â· Depois</span>
+      <h2>A transformaÃ§Ã£o <em>operacional esperada</em>.</h2>
+    </div>
+
+    <div class="beforeafter-wrap reveal">
+      <div class="beforeafter__controls" aria-label="Alternar Antes e Depois">
+        <button class="beforeafter__toggle is-active" type="button" data-ba-target="before" aria-label="Mostrar ponto A">A</button>
+        <button class="beforeafter__toggle" type="button" data-ba-target="after" aria-label="Mostrar ponto B">B</button>
+      </div>
+
+      <div class="beforeafter" id="beforeafter-carousel" data-active="before">
+        <div class="ba-col ba-col--before">
+          <div class="ba-stack">
+            <figure class="ba-media">
+              <img src="uploads/imagem-06.png?v=20260425-150245" alt="CenÃ¡rio antes da transformaÃ§Ã£o operacional">
+            </figure>
+            <div class="ba-copy">
+              <h3>Antes</h3>
+              <ul>
+                <li data-n="A1">Processos travados e lentos</li>
+                <li data-n="A2">Retrabalho constante</li>
+                <li data-n="A3">Buscas manuais em planilhas</li>
+                <li data-n="A4">Dificuldade operacional no dia a dia</li>
+                <li data-n="A5">Excesso de dependÃªncia de pessoas-chave</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="ba-col ba-col--after">
+          <div class="ba-stack">
+            <figure class="ba-media">
+              <img src="uploads/imagem-07.png?v=20260425-150252" alt="CenÃ¡rio depois da transformaÃ§Ã£o operacional">
+            </figure>
+            <div class="ba-copy">
+              <h3>Depois</h3>
+              <ul>
+                <li data-n="D1">OperaÃ§Ã£o inteligente e previsÃ­vel</li>
+                <li data-n="D2">AutomaÃ§Ã£o dos fluxos repetitivos</li>
+                <li data-n="D3">Consulta por chat, direta e imediata</li>
+                <li data-n="D4">RelatÃ³rios rÃ¡pidos sob demanda</li>
+                <li data-n="D5">Mais clareza, menos fricÃ§Ã£o, mais eficiÃªncia</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Statement -->
+  <section class="statement reveal">
+    <span class="kicker">Diferenciais</span>
+    <h2>NÃ£o Ã© <em>sÃ³ consultoria</em>.<br>Ã‰ mÃ©todo vivo.</h2>
+
+    <div class="statement__row">
+      <p>DiagnÃ³stico + estratÃ©gia + criaÃ§Ã£o + IA aplicada + treinamento. Uma camada Ãºnica que liga o entendimento da operaÃ§Ã£o ao resultado real, dentro da rotina da equipe.</p>
+      <div class="statement__tags">
+        <span>IA aplicada</span>
+        <span>Moda &amp; confecÃ§Ã£o</span>
+        <span>VisÃ£o visual + operacional</span>
+        <span>SoluÃ§Ãµes reais</span>
+        <span>EstruturaÃ§Ã£o prÃ¡tica</span>
+        <span>Escala por nicho</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section class="cta" id="cta-final">
+    <div class="cta__inner">
+      <span class="kicker">PrÃ³ximo passo</span>
+      <h2>Leve IA aplicada <em>para dentro</em> da operaÃ§Ã£o da sua empresa.</h2>
+
+      <div class="cta__row">
+        <p>Uma conversa estratÃ©gica pode revelar onde automatizar, o que construir e como treinar a equipe para trabalhar melhor.</p>
+        <div class="cta__buttons">
+          <a href="mailto:contato@awconsultoria.com" class="btn btn--dark">
+            Enviar e-mail
+            <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 13 L13 3 M6 3 H13 V10"/>
+            </svg>
+          </a>
+          <a href="https://wa.me/5562985591895" class="btn btn--ghost">Chamar no WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="foot">
+    <div class="foot__inner">
+      <div class="foot__top">
+        <div>
+          <div class="foot__brand">AW</div>
+          <div style="margin-top:6px;">Consultoria de IA Aplicada</div>
+        </div>
+        <div class="foot__links">
+          <a href="mailto:contato@awconsultoria.com">E-mail</a>
+          <a href="https://wa.me/5562985591895">WhatsApp</a>
+        </div>
+        <div class="foot__right">AtuaÃ§Ã£o remota e<br>presencial sob consulta.</div>
+      </div>
+      <div class="foot__meta">
+        <span>Â© <span id="year-2">â€”</span> AW Â· Todos os direitos reservados.</span>
+        <span>Moda Â· ConfecÃ§Ã£o Â· Marcas</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal -->
+  <div class="modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal__panel">
+      <button class="modal__close" id="close-video" aria-label="Fechar">
+        <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 3 L13 13 M13 3 L3 13"/></svg>
+      </button>
+      <div class="modal__frame">
+        <button class="modal__frame-close" id="close-video-frame" aria-label="Fechar vÃ­deo">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3 L13 13 M13 3 L3 13"/></svg>
+        </button>
+        <video
+          id="video-player"
+          class="modal__video"
+          controls
+          playsinline
+          preload="metadata"
+        >
+          <source src="https://pub-6cce15b3f2124ca98e250ca20770011c.r2.dev/Avatar_Video%20(1).mp4" type="video/mp4">
+          Seu navegador nÃ£o suporta reproduÃ§Ã£o de vÃ­deo.
+        </video>
+      </div>
+      <h3 id="modal-title">Como a AW atua dentro da empresa</h3>
+      <p>ApresentaÃ§Ã£o em vÃ­deo da atuaÃ§Ã£o da AW dentro da operaÃ§Ã£o do cliente.</p>
+    </div>
+  </div>
+
+<!-- React + Tweaks panel -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+
+<script>
+/* â”€â”€â”€â”€â”€â”€â”€ Core behavior â”€â”€â”€â”€â”€â”€â”€ */
+(function(){
+  // Year
+  const y = new Date().getFullYear();
+  const yearEl = document.getElementById('year');
+  const yearEl2 = document.getElementById('year-2');
+  if (yearEl) yearEl.textContent = y;
+  if (yearEl2) yearEl2.textContent = y;
+
+  // Intro reveal on load
+  requestAnimationFrame(()=>{
+    document.getElementById('intro').classList.add('is-in');
+  });
+
+  // Nav stuck
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    nav.classList.toggle('is-stuck', window.scrollY > 40);
+  };
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+
+  // Reveal on scroll via IntersectionObserver
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if (e.isIntersecting){ e.target.classList.add('is-in'); io.unobserve(e.target); }
+    });
+  }, { rootMargin:'0px 0px -10% 0px', threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Smooth anchor scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      const id = a.getAttribute('href');
+      if (id.length <= 1) return;
+      const el = document.querySelector(id);
+      if (!el) return;
+      e.preventDefault();
+      el.scrollIntoView({ behavior:'smooth', block:'start' });
+    });
+  });
+
+  // Theme toggle (bone = dia, noir = noite) â€” persistÃªncia via localStorage + meta edit_mode
+  const themeBtn = document.getElementById('theme-toggle');
+  const themeLabel = themeBtn.querySelector('.theme-toggle__label');
+  const applyTheme = (palette) => {
+    document.body.dataset.palette = palette;
+    themeLabel.textContent = palette === 'noir'
+      ? themeLabel.dataset.night
+      : themeLabel.dataset.day;
+    themeBtn.setAttribute('aria-pressed', palette === 'noir' ? 'true' : 'false');
+  };
+  // Initial: respect saved value (Tweaks panel already sets it) or default to bone
+  const initial = document.body.dataset.palette || 'bone';
+  applyTheme(initial === 'noir' ? 'noir' : (initial === 'bone' ? 'bone' : initial));
+  themeBtn.addEventListener('click', ()=>{
+    const next = document.body.dataset.palette === 'noir' ? 'bone' : 'noir';
+    applyTheme(next);
+    try { localStorage.setItem('aw-theme', next); } catch(e){}
+    // Sync with host (Tweaks persistence)
+    window.parent.postMessage({ type:'__edit_mode_set_keys', edits:{ palette: next } }, '*');
+  });
+  // On load, prefer localStorage if present
+  try {
+    const saved = localStorage.getItem('aw-theme');
+    if (saved === 'noir' || saved === 'bone') applyTheme(saved);
+  } catch(e){}
+
+  // Video modal
+  const modal = document.getElementById('video-modal');
+  const openBtn = document.getElementById('open-video');
+  const closeBtn = document.getElementById('close-video');
+  const closeBtnFrame = document.getElementById('close-video-frame');
+  const videoPlayer = document.getElementById('video-player');
+  const videoThumb = document.getElementById('video-thumb');
+
+  if (videoThumb) {
+    videoThumb.addEventListener('loadeddata', () => {
+      videoThumb.currentTime = 0.01;
+      videoThumb.pause();
+    }, { once: true });
+  }
+
+  const openVideoModal = () => {
+    modal.classList.add('is-open');
+    if (videoPlayer) {
+      videoPlayer.currentTime = 0;
+      videoPlayer.play().catch(() => {});
+    }
+  };
+
+  const closeVideoModal = () => {
+    modal.classList.remove('is-open');
+    if (videoPlayer) {
+      videoPlayer.pause();
+      videoPlayer.currentTime = 0;
+    }
+  };
+
+  openBtn.addEventListener('click', openVideoModal);
+  closeBtn.addEventListener('click', closeVideoModal);
+  closeBtnFrame.addEventListener('click', closeVideoModal);
+  modal.addEventListener('click', (e)=>{ if (e.target === modal) closeVideoModal(); });
+  document.addEventListener('keydown', (e)=>{ if (e.key === 'Escape') closeVideoModal(); });
+
+  // Antes/Depois carousel (A texto + B imagem -> A imagem + B texto)
+  const baCarousel = document.getElementById('beforeafter-carousel');
+  const baToggles = Array.from(document.querySelectorAll('[data-ba-target]'));
+  let baTimer = null;
+
+  const setBaState = (state) => {
+    if (!baCarousel) return;
+    baCarousel.dataset.active = state;
+    baToggles.forEach((btn) => {
+      const active = btn.dataset.baTarget === state;
+      btn.classList.toggle('is-active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+  };
+
+  const startBaAutoplay = () => {
+    if (!baCarousel) return;
+    clearInterval(baTimer);
+    baTimer = setInterval(() => {
+      const next = baCarousel.dataset.active === 'before' ? 'after' : 'before';
+      setBaState(next);
+    }, 5500);
+  };
+
+  if (baCarousel) {
+    baToggles.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        setBaState(btn.dataset.baTarget);
+        startBaAutoplay();
+      });
+    });
+    baCarousel.addEventListener('mouseenter', () => clearInterval(baTimer));
+    baCarousel.addEventListener('mouseleave', startBaAutoplay);
+    setBaState('before');
+    startBaAutoplay();
+  }
+})();
+</script>
+
+<!-- Tweaks app -->
+<div id="tweaks-root"></div>
+<script type="text/babel" data-presets="react">
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "palette": "noir",
+  "typography": "modern",
+  "tickerOn": true
+}/*EDITMODE-END*/;
+
+function TweaksApp(){
+  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+  React.useEffect(()=>{
+    document.body.dataset.palette = t.palette;
+  }, [t.palette]);
+
+  React.useEffect(()=>{
+    document.body.dataset.type = t.typography;
+  }, [t.typography]);
+
+  React.useEffect(()=>{
+    const ticker = document.querySelector('.ticker');
+    if (!ticker) return;
+    ticker.style.display = t.tickerOn ? '' : 'none';
+  }, [t.tickerOn]);
+
+  return (
+    <TweaksPanel title="Tweaks">
+      <TweakSection label="Typography" />
+      <TweakRadio
+        label="Display style"
+        value={t.typography}
+        options={['editorial','modern','geometric']}
+        onChange={(v)=>setTweak('typography', v)}
+      />
+      <TweakSection label="Details" />
+      <TweakToggle
+        label="Brand ticker"
+        value={t.tickerOn}
+        onChange={(v)=>setTweak('tickerOn', v)}
+      />
+    </TweaksPanel>
+  );
+}
+
+const waitForTweaks = setInterval(()=>{
+  if (window.TweaksPanel && window.useTweaks){
+    clearInterval(waitForTweaks);
+    const root = ReactDOM.createRoot(document.getElementById('tweaks-root'));
+    root.render(<TweaksApp/>);
+  }
+}, 40);
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,5 @@
+# Minimal repo artifacts
+server-out.log
+server-err.log
+node_modules/
+
